@@ -1,26 +1,38 @@
-### Make installment payments through different methods and banks
+## Make installment payments through different methods and banks
  
- 1. Amount Input View
- 2. Payment Methods List
- 3. Banks List
- 4. Installments List
- 5- Success View
-
-Technologies:
-
- - Dagger2
- - Coroutine
- - LiveData
- - Retrofit
- - Navigation
+ * Amount Input View
+ * Payment Methods List
+ * Banks List
+ * Installments List
+ * Success View
  
+ Libraries Used
+ --------------
+ * Foundation
+   * Android KTK 
+   * Test 
+ * Architecture
+   * Data binding 
+   * Lifecycles
+   * LiveData
+   * Navigation
+   * ViewModel
+ * UI 
+   * Fragment
+   * Layout
+ * Third party
+   * Glide
+   * Kotlin Coroutines  
+   * Retrofit
+   * Dagger2
+   
+   
 References: 
 
-    API:
-     . mercadopabgo.com.ar/developers/es
+ * [API][0]
+ * [Dagger][1]
+   * [devexperto][2]
 
-    Dagger: 
-     . devexperto.com/como-usar-dagger-kotlin/
-     . developer.android.com/training/dependency-injection/dagger-basics
-     
-    
+[0]: mercadopabgo.com.ar/developers/es
+[1]: devexperto.com/como-usar-dagger-kotlin/
+[2]: developer.android.com/training/dependency-injection/dagger-basics

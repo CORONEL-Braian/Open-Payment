@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeActivity">
+
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="org.techdev.openpayment.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" >
+
+    </activity>
+
+    <fragment
+        android:id="@+id/specifyAmountFragment"
+        android:name="org.techdev.openpayment.SpecifyAmountFragment"
+        android:label="fragment_specify_amount"
+        tools:layout="@layout/fragment_specify_amount" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="org.techdev.openpayment.payment.ui.PaymentFragment"
+        android:label="fragment_payment_list"
+        tools:layout="@layout/fragment_payment_list" >
+    </fragment>
+
+</navigation>
