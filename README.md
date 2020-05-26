@@ -31,8 +31,8 @@ References:
 
  * [API][0]
  * [Dagger][1]
-   * [devexperto][2]
+   * https://proandroiddev.com/part-2-simple-dependency-injection-f2e36656a054
+   * https://medium.com/@serapbercin001/how-to-use-android-injector-for-activity-and-fragment-objects-through-new-dagger-2-with-kotlin-704eb8a98c43
 
 [0]: mercadopabgo.com.ar/developers/es
-[1]: devexperto.com/como-usar-dagger-kotlin/
 [2]: developer.android.com/training/dependency-injection/dagger-basics

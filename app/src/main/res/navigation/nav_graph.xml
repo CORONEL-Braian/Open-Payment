@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="org.techdev.openpayment.payment.ui.PaymentFragment"
+        android:name="org.techdev.openpayment.payment.ui.PaymentMethodsFragment"
         android:label="fragment_payment_list"
         tools:layout="@layout/fragment_payment_list" >
     </fragment>

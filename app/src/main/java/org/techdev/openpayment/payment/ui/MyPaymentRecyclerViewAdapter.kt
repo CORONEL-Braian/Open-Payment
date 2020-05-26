@@ -8,7 +8,7 @@ import android.widget.TextView
 import org.techdev.openpayment.R
 
 
-import org.techdev.openpayment.payment.ui.PaymentFragment.OnListFragmentInteractionListener
+import org.techdev.openpayment.payment.ui.PaymentMethodsFragment.OnListFragmentInteractionListener
 import org.techdev.openpayment.payment.ui.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_payment.view.*

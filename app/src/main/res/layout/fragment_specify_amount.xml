@@ -15,11 +15,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_specify_amount"
-            android:layout_margin="8dp"
+            android:layout_marginTop="150dp"
             android:textSize="24sp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
@@ -46,7 +45,6 @@
 
         </RadioGroup>
 
-
         <EditText
             android:id="@+id/edit_amount"
             android:layout_width="wrap_content"
@@ -60,8 +58,7 @@
             android:textSize="32sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            tools:text="1000000" />
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <Button
             android:id="@+id/payment_methods"
@@ -75,8 +72,5 @@
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </FrameLayout>

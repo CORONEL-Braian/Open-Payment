@@ -17,14 +17,16 @@ import org.techdev.openpayment.payment.ui.dummy.DummyContent.DummyItem
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [PaymentFragment.OnListFragmentInteractionListener] interface.
+ * [PaymentMethodsFragment.OnListFragmentInteractionListener] interface.
  */
-class PaymentFragment : Fragment() {
+class PaymentMethodsFragment : Fragment() {
 
-    // TODO: Customize parameters
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+//    Require Java 1.8
+//    private val args: PaymentFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
