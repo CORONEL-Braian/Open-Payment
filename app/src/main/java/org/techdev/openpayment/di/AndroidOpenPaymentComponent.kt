@@ -20,8 +20,8 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     AndroidInjectionModule::class,
     ActivityModule::class,
-    FragmentModule::class
-//    NetworkModule::class
+    FragmentModule::class,
+    NetworkModule::class
 ])
 interface AndroidOpenPaymentComponent : AndroidInjector<OpenPaymentApp> {
 

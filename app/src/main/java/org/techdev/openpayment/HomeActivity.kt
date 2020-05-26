@@ -3,11 +3,11 @@ package org.techdev.openpayment
 import android.os.Bundle
 import android.util.Log
 import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
 import org.techdev.openpayment.payment.ui.PaymentMethodsFragment
 import org.techdev.openpayment.payment.ui.dummy.DummyContent
+import org.techdev.openpayment.util.BaseActivity
 
-class HomeActivity : DaggerAppCompatActivity(), PaymentMethodsFragment.OnListFragmentInteractionListener {
+class HomeActivity : BaseActivity(), PaymentMethodsFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
