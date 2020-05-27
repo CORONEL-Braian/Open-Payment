@@ -2,7 +2,7 @@ package org.techdev.openpayment.payment.data.repository
 
 import com.google.gson.annotations.SerializedName
 
-data class PaymentMethodsResponse(
+data class PaymentMethodResponse(
     val id: String,
     val name: String,
     @SerializedName("payment_type_id") val paymentTypeId: String,

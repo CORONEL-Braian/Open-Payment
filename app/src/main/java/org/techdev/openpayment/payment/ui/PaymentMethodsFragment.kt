@@ -2,6 +2,7 @@ package org.techdev.openpayment.payment.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,21 +10,28 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import org.techdev.openpayment.R
 
 import org.techdev.openpayment.payment.ui.dummy.DummyContent
 import org.techdev.openpayment.payment.ui.dummy.DummyContent.DummyItem
+import org.techdev.openpayment.payment.vm.PaymentMethodsVM
+import javax.inject.Inject
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [PaymentMethodsFragment.OnListFragmentInteractionListener] interface.
- */
 class PaymentMethodsFragment : Fragment() {
 
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var paymentMethodsVM: PaymentMethodsVM
+
 
 //    Require Java 1.8
 //    private val args: PaymentFragmentArgs by navArgs()
@@ -33,6 +41,8 @@ class PaymentMethodsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_payment_list, container, false)
+
+
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -45,6 +55,17 @@ class PaymentMethodsFragment : Fragment() {
             }
         }
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        paymentMethodsVM = ViewModelProvider(this, viewModelFactory).get(PaymentMethodsVM::class.java)
+
+    /*    paymentMethodsVM.getPaymentMethods()
+
+        paymentMethodsVM.paymentMethods.observe(viewLifecycleOwner, Observer {
+            Log.d("TEST", "" + it.toString())
+        })*/
     }
 
     override fun onAttach(context: Context) {
@@ -61,17 +82,6 @@ class PaymentMethodsFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onListFragmentInteraction(item: DummyItem?)

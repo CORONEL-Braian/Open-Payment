@@ -11,7 +11,9 @@ import retrofit2.HttpException
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketTimeoutException
+import javax.inject.Singleton
 
+@Singleton
 class APICallManager {
 
     /**

@@ -10,7 +10,7 @@ interface PaymentMethodRepository {
 
     interface RemoteRepository {
         suspend fun getPaymentMethods(remoteErrorEmitter: RemoteErrorEmitter)
-                : PaymentMethodsResponse?
+                : List<PaymentMethodResponse>?
     }
 
 }
