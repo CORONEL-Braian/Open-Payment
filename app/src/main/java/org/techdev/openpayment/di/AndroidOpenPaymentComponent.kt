@@ -24,7 +24,8 @@ import javax.inject.Singleton
     ViewModelFactoryModule::class,
     ViewModelModule::class,
     RepositoryModule::class,
-    NetworkModule::class
+    NetworkModule::class,
+    AppModule::class
 ],
     dependencies = [])
 interface AndroidOpenPaymentComponent : AndroidInjector<OpenPaymentApp> {

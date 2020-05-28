@@ -40,7 +40,6 @@ class PaymentMethodListAdapter :
         private val image = paymentMethodView.findViewById<ImageView>(R.id.image)
         private val name = paymentMethodView.findViewById<TextView>(R.id.name)
 
-
         @SuppressLint("SetTextI18n")
         fun bind(paymentMethod: PaymentMethod) {
             image.loadFromUrl(paymentMethod.secureThumbnail)
