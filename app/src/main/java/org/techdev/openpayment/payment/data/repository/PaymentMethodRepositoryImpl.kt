@@ -5,10 +5,11 @@ import org.techdev.openpayment.payment.domain.model.PaymentMethodList
 import org.techdev.openpayment.util.RemoteErrorEmitter
 import javax.inject.Inject
 
-class PaymentMethodRepositoryImpl @Inject constructor(private val remoteRepository: PaymentMethodRepository.RemoteRepository) :
-    PaymentMethodRepository {
+class PaymentMethodRepositoryImpl
+@Inject
+constructor(private val remoteRepository: PaymentMethodRemoteRepository) {
 
-    override suspend fun getPaymentMethods(remoteErrorEmitter: RemoteErrorEmitter): PaymentMethodList? {
+    suspend fun getPaymentMethods(remoteErrorEmitter: RemoteErrorEmitter): PaymentMethodList? {
         val response = remoteRepository.getPaymentMethods(remoteErrorEmitter)
         val mapper = PaymentMethodMapper()
         return response?.let {

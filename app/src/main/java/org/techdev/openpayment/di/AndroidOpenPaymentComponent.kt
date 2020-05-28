@@ -21,9 +21,12 @@ import javax.inject.Singleton
     AndroidInjectionModule::class,
     ActivityModule::class,
     FragmentModule::class,
+    ViewModelFactoryModule::class,
     ViewModelModule::class,
+    RepositoryModule::class,
     NetworkModule::class
-])
+],
+    dependencies = [])
 interface AndroidOpenPaymentComponent : AndroidInjector<OpenPaymentApp> {
 
     override fun inject(instance: OpenPaymentApp)

@@ -13,15 +13,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
+import dagger.android.support.DaggerFragment
 import org.techdev.openpayment.R
-
+import org.techdev.openpayment.di.DaggerViewModelFactory
+import org.techdev.openpayment.di.ViewModelFactoryModule
 import org.techdev.openpayment.payment.ui.dummy.DummyContent
 import org.techdev.openpayment.payment.ui.dummy.DummyContent.DummyItem
 import org.techdev.openpayment.payment.vm.PaymentMethodsVM
+import org.techdev.openpayment.util.BaseFragment
 import javax.inject.Inject
 
-class PaymentMethodsFragment : Fragment() {
+class PaymentMethodsFragment : BaseFragment() {
 
     private var columnCount = 1
 
@@ -30,8 +32,9 @@ class PaymentMethodsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var paymentMethodsVM: PaymentMethodsVM
-
+    private lateinit var paymentMethodsVM: PaymentMethodsVM /*by viewModels {
+        viewModelFactory
+    }*/
 
 //    Require Java 1.8
 //    private val args: PaymentFragmentArgs by navArgs()
@@ -61,11 +64,11 @@ class PaymentMethodsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         paymentMethodsVM = ViewModelProvider(this, viewModelFactory).get(PaymentMethodsVM::class.java)
 
-    /*    paymentMethodsVM.getPaymentMethods()
+        paymentMethodsVM.getPaymentMethods()
 
         paymentMethodsVM.paymentMethods.observe(viewLifecycleOwner, Observer {
-            Log.d("TEST", "" + it.toString())
-        })*/
+            Log.d("TEST", "" + it?.toString())
+        })
     }
 
     override fun onAttach(context: Context) {

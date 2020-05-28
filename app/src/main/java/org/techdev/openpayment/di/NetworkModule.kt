@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.techdev.openpayment.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -15,7 +16,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofitBuilder(): Retrofit.Builder = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
 
     @Singleton

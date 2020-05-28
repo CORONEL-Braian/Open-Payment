@@ -1,6 +1,7 @@
 package org.techdev.openpayment.data.network
 
 import android.util.Log
+import dagger.Provides
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
@@ -11,10 +12,11 @@ import retrofit2.HttpException
 import java.io.IOException
 import java.lang.Exception
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class APICallManager {
+class APICallManager @Inject constructor() {
 
     /**
      * PRO: Execute a safe api call and handle exception on http calls

@@ -8,12 +8,11 @@ import javax.inject.Inject
 
 class PaymentMethodRemoteRepository @Inject constructor(
     retrofitService: RetrofitService,
-    private val apiCallManager: APICallManager
-) : PaymentMethodRepository.RemoteRepository {
+    val apiCallManager: APICallManager) {
 
     private val paymentMethodService = retrofitService.createService(PaymentMethodService::class.java)
 
-    override suspend fun getPaymentMethods(remoteErrorEmitter: RemoteErrorEmitter): List<PaymentMethodResponse>? =
+    suspend fun getPaymentMethods(remoteErrorEmitter: RemoteErrorEmitter): List<PaymentMethodResponse>? =
         apiCallManager.executeSafeApiCall(remoteErrorEmitter) {
             paymentMethodService.getPaymentMethods()
         }

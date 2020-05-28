@@ -11,7 +11,7 @@ data class PaymentMethodResponse(
     val thumbnail: String,
     @SerializedName("deferred_capture") val deferredCapture: String,
     val settings: List<Setting>,
-    @SerializedName("min_allowed_amount") val minAllowedAmount: Int,
+    @SerializedName("min_allowed_amount") val minAllowedAmount: Double,
     @SerializedName("max_allowed_amount") val maxAllowedAmount: Int,
     @SerializedName("accreditation_time") val accreditationTime: Int
 )
