@@ -1,7 +1,6 @@
 package org.techdev.openpayment.payment.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,16 +20,14 @@ class PaymentMethodsFragment : BaseFragment() {
     private lateinit var paymentMethodsVM: PaymentMethodsVM
     private lateinit var paymentMethodListAdapter: PaymentMethodListAdapter
 
-//    Require Java 1.8
-//    private val args: PaymentFragmentArgs by navArgs()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPaymentListBinding.inflate(layoutInflater)
 
-        paymentMethodListAdapter = PaymentMethodListAdapter()
+        val args = PaymentMethodsFragmentArgs.fromBundle(arguments ?: Bundle())
+        paymentMethodListAdapter = PaymentMethodListAdapter(args.amount)
 
         binding.listRecyclerView.adapter = paymentMethodListAdapter
 
@@ -41,10 +38,12 @@ class PaymentMethodsFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         paymentMethodsVM = ViewModelProvider(this, viewModelFactory).get(PaymentMethodsVM::class.java)
 
-        paymentMethodsVM.getPaymentMethods()
+//          No superponer data del adapter
+        if (paymentMethodsVM.paymentMethods.value == null) {
+            paymentMethodsVM.getPaymentMethods()
+        }
 
         paymentMethodsVM.paymentMethods.observe(viewLifecycleOwner, Observer {
-            Log.d("TEST", "" + it?.toString())
             paymentMethodListAdapter.setSubmitList(it.paymentMethods)
         })
     }

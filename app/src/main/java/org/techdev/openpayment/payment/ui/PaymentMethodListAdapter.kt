@@ -1,11 +1,13 @@
 package org.techdev.openpayment.payment.ui
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +15,12 @@ import org.techdev.openpayment.R
 import org.techdev.openpayment.extensions.loadFromUrl
 import org.techdev.openpayment.payment.domain.model.PaymentMethod
 
-class PaymentMethodListAdapter :
+class PaymentMethodListAdapter(val amount: Float) :
     ListAdapter<PaymentMethod, PaymentMethodListAdapter.PaymentMethodViewHolder>(PaymentMethodCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentMethodViewHolder =
         PaymentMethodViewHolder(
+            amount,
             LayoutInflater.from(parent.context).inflate(
                 R.layout.fragment_payment, parent, false
             )
@@ -35,7 +38,7 @@ class PaymentMethodListAdapter :
         notifyDataSetChanged()
     }
 
-    class PaymentMethodViewHolder(paymentMethodView: View) : RecyclerView.ViewHolder(paymentMethodView) {
+    class PaymentMethodViewHolder(val amount: Float, paymentMethodView: View) : RecyclerView.ViewHolder(paymentMethodView) {
 
         private val image = paymentMethodView.findViewById<ImageView>(R.id.image)
         private val name = paymentMethodView.findViewById<TextView>(R.id.name)
@@ -44,6 +47,12 @@ class PaymentMethodListAdapter :
         fun bind(paymentMethod: PaymentMethod) {
             image.loadFromUrl(paymentMethod.secureThumbnail)
             name.text = paymentMethod.name
+
+            itemView.setOnClickListener {
+                Navigation.findNavController(it).navigate(
+                    R.id.action_paymentFragment_to_banksFragment,
+                    PaymentMethodsFragmentDirections.actionPaymentFragmentToBanksFragment(amount, paymentMethod.id).arguments)
+            }
         }
     }
 

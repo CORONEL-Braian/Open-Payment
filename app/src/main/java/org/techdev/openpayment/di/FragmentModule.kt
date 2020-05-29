@@ -3,6 +3,7 @@ package org.techdev.openpayment.di
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import org.techdev.openpayment.amount.SpecifyAmountFragment
+import org.techdev.openpayment.bank.ui.BanksFragment
 import org.techdev.openpayment.payment.ui.PaymentMethodsFragment
 
 @Module
@@ -13,5 +14,8 @@ interface FragmentModule {
 
     @ContributesAndroidInjector
     fun paymentMethodsFragment(): PaymentMethodsFragment
+
+    @ContributesAndroidInjector
+    fun banksFragment(): BanksFragment
 
 }

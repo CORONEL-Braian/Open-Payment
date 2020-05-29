@@ -28,10 +28,14 @@ class SpecifyAmountFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         binding.paymentMethods.setOnClickListener {
-            val amount: Double? = binding.editAmount.text.toString().toDoubleOrNull()
-            val action = SpecifyAmountFragmentDirections
-                .actionSpecifyAmountFragmentToPaymentFragment()
-            binding.root.findNavController().navigate(action)
+            val amount: Float? = binding.editAmount.text.toString().toFloatOrNull()
+            amount?.let {
+                if (it > 0) {
+                    val action = SpecifyAmountFragmentDirections
+                        .actionSpecifyAmountFragmentToPaymentFragment(it)
+                    binding.root.findNavController().navigate(action)
+                }
+            }
         }
 
     }

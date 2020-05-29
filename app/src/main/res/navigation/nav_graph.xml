@@ -10,7 +10,6 @@
         android:name="org.techdev.openpayment.amount.SpecifyAmountFragment"
         android:label="fragment_specify_amount"
         tools:layout="@layout/fragment_specify_amount" >
-
         <action
             android:id="@+id/action_specifyAmountFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
@@ -21,6 +20,30 @@
         android:name="org.techdev.openpayment.payment.ui.PaymentMethodsFragment"
         android:label="fragment_payment_list"
         tools:layout="@layout/fragment_payment_list" >
+        <argument
+            android:name="amount"
+            app:argType="float"/>
+        <action
+            android:id="@+id/action_paymentFragment_to_banksFragment"
+            app:destination="@id/banksFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_enter"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/banksFragment"
+        android:name="org.techdev.openpayment.bank.ui.BanksFragment"
+        android:label="BanksFragment"
+        tools:layout="@layout/fragment_bank_list">
+        <argument
+            android:name="amount"
+            app:argType="float"/>
+        <argument
+            android:name="paymentMethodId"
+            app:argType="string"/>
+
     </fragment>
 
 </navigation>
