@@ -43,7 +43,23 @@
         <argument
             android:name="paymentMethodId"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_banksFragment_to_installmentsFragment"
+            app:destination="@id/installmentsFragment" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/installmentsFragment"
+        android:name="org.techdev.openpayment.installment.ui.InstallmentsFragment"
+        android:label="InstallmentsFragment"
+        tools:layout="@layout/fragment_installments">
+        <argument
+            android:name="amount"
+            app:argType="float"/>
+        <argument
+            android:name="bankId"
+            app:argType="string"/>
     </fragment>
 
 </navigation>

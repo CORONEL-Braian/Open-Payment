@@ -46,6 +46,7 @@ class BanksFragment : BaseFragment() {
         }
 
         banksVM.banks.observe(viewLifecycleOwner, Observer {
+//            TODO: Si la lista viene vacia voy directamente a InstallmentsFragment
             bankListAdapter.setSubmitList(it.banks)
         })
     }

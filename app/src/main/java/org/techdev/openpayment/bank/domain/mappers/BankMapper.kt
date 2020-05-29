@@ -15,7 +15,7 @@ class BankMapper {
         )
 
     /**
-     * Convert the bank method list from the data to the domain model
+     * Convert the bank list from the data to the domain model
      */
     private fun convertBankListToDomain(list: List<BankResponse>) : List<Bank> {
         return list.mapIndexed { _, bankResponse ->
