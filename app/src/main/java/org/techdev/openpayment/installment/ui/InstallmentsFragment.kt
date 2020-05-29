@@ -27,7 +27,7 @@ class InstallmentsFragment : BaseFragment() {
         binding = FragmentInstallmentsBinding.inflate(layoutInflater)
 
         val args = InstallmentsFragmentArgs.fromBundle(arguments ?: Bundle())
-        installmentListAdapter = PayerCostListAdapter(args.amount)
+        installmentListAdapter = PayerCostListAdapter(args.amount, args.paymentMethodId)
 
         binding.listRecyclerView.adapter = installmentListAdapter
 
@@ -41,12 +41,14 @@ class InstallmentsFragment : BaseFragment() {
         val args = InstallmentsFragmentArgs.fromBundle(arguments ?: Bundle())
 
         if (installmentsVM.installments.value == null) {
-            installmentsVM.getInstallments(args.bankId)
+            installmentsVM.getInstallments(
+                args.amount,
+                args.paymentMethodId,
+                args.bankId
+            )
         }
 
         installmentsVM.installments.observe(viewLifecycleOwner, Observer {
-
-//            TODO: Si la lista viene vacia voy directamente a InstallmentsFragment
             installmentListAdapter.setSubmitList(it.payerCosts)
         })
     }

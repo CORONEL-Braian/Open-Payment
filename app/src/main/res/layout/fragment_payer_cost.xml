@@ -21,38 +21,31 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:background="@color/cardview_dark_background"
-            tools:layout_width="200dp"
-            >
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/image"
+            <TextView
+                android:id="@+id/labels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_width="100dp"
-                tools:layout_height="80dp"
-
+                app:layout_constraintBottom_toTopOf="@id/recommendedMessage"
+                tools:text="CFT_0,00%|TEA_0,00%"
                 />
 
             <TextView
-                android:id="@+id/name"
-                android:layout_width="0dp"
+                android:id="@+id/recommendedMessage"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:textSize="20sp"
                 android:fontFamily="sans-serif-medium"
-                android:autoSizeMinTextSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/image"
+                tools:text="3 cuotas de $ 20,90 ($ 62,70)"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Mercado Pago + Banco Patagonia"/>
-
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

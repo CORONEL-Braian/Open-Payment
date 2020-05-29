@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import org.techdev.openpayment.R
 import org.techdev.openpayment.installment.domain.model.PayerCost
 
-class PayerCostListAdapter(val amount: Float) :
+class PayerCostListAdapter(val amount: Float, val paymentMethodId: String) :
     ListAdapter<PayerCost, PayerCostListAdapter.PayerCostViewHolder>(PayerCostCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PayerCostViewHolder =
         PayerCostViewHolder(
             amount,
+            paymentMethodId,
             LayoutInflater.from(parent.context).inflate(
                 R.layout.fragment_payer_cost, parent, false
             )
@@ -35,18 +35,18 @@ class PayerCostListAdapter(val amount: Float) :
         notifyDataSetChanged()
     }
 
-    class PayerCostViewHolder(val amount: Float, payerCostView: View) : RecyclerView.ViewHolder(payerCostView) {
+    class PayerCostViewHolder(val amount: Float, val paymentMethodId: String, payerCostView: View) : RecyclerView.ViewHolder(payerCostView) {
 
-        private val image = payerCostView.findViewById<ImageView>(R.id.image)
-        private val name = payerCostView.findViewById<TextView>(R.id.name)
+        private val labels = payerCostView.findViewById<TextView>(R.id.labels)
+        private val recommendedMessage = payerCostView.findViewById<TextView>(R.id.recommendedMessage)
 
         @SuppressLint("SetTextI18n")
         fun bind(payerCost: PayerCost) {
-    /*        image.loadFromUrl(payerCost.secureThumbnail)
-            name.text = payerCost.name*/
+            labels.text = payerCost.labels[0]
+            recommendedMessage.text = payerCost.recommendedMessage
 
             itemView.setOnClickListener {
-
+//                TODO: Seguir el flujo
             }
         }
     }

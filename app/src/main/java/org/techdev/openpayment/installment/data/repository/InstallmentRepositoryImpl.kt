@@ -9,8 +9,18 @@ class InstallmentRepositoryImpl
 @Inject
 constructor(private val remoteRepository: InstallmentRemoteRepository) {
 
-    suspend fun getInstallments(remoteErrorEmitter: RemoteErrorEmitter, paymentMethodId: String): Installment? {
-        val response = remoteRepository.getInstallments(remoteErrorEmitter, paymentMethodId)
+    suspend fun getInstallments(
+        remoteErrorEmitter: RemoteErrorEmitter,
+        amount: Float,
+        paymentMethodId: String,
+        issuerId: Int
+    ): Installment? {
+        val response = remoteRepository.getInstallments(
+            remoteErrorEmitter,
+            amount,
+            paymentMethodId,
+            issuerId
+        )
         val mapper = InstallmentMapper()
         return response?.let {
             mapper.convertFromDataModelToDomain(it)

@@ -7,10 +7,12 @@ import retrofit2.http.Query
 
 interface InstallmentService {
 
-    @GET("v1/payment_methods/card_issuers")
+    @GET("v1/payment_methods/installments")
     suspend fun getInstallments(
         @Query("public_key") appid: String = BuildConfig.PUBLIC_KEY,
-        @Query("payment_method_id") paymentMethodId: String
-    ) : InstallmentsResponse
+        @Query("amount") amount: String,
+        @Query("payment_method_id") paymentMethodId: String,
+        @Query("issuer.id") issuerId: String
+    ) : List<InstallmentsResponse>
 
 }

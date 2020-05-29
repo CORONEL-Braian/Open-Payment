@@ -17,11 +17,16 @@ class InstallmentsVM @Inject constructor(
     private val _installments = MutableLiveData<Installment>()
     val installments: LiveData<Installment> get() = _installments
 
-    fun getInstallments(paymentMethodId: String) {
+    fun getInstallments(amount: Float, paymentMethodId: String, issuerId: Int) {
         viewModelScope.launch {
             mutableScreenState.postValue(ScreenState.LOADING)
 
-            val installments = installmentRepositoryImpl.getInstallments(this@InstallmentsVM, paymentMethodId)
+            val installments = installmentRepositoryImpl.getInstallments(
+                this@InstallmentsVM,
+                amount,
+                paymentMethodId,
+                issuerId
+            )
             _installments.postValue(installments)
 
             val newState = if (installments == null) ScreenState.ERROR else ScreenState.RENDER

@@ -58,8 +58,11 @@
             android:name="amount"
             app:argType="float"/>
         <argument
-            android:name="bankId"
+            android:name="paymentMethodId"
             app:argType="string"/>
+        <argument
+            android:name="bankId"
+            app:argType="integer"/>
     </fragment>
 
 </navigation>

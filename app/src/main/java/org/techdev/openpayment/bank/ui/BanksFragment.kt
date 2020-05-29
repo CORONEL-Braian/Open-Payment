@@ -27,8 +27,8 @@ class BanksFragment : BaseFragment() {
     ): View? {
         binding = FragmentBankListBinding.inflate(layoutInflater)
 
-        val args = PaymentMethodsFragmentArgs.fromBundle(arguments ?: Bundle())
-        bankListAdapter = BankListAdapter(args.amount)
+        val args = BanksFragmentArgs.fromBundle(arguments ?: Bundle())
+        bankListAdapter = BankListAdapter(args.amount, args.paymentMethodId)
 
         binding.listRecyclerView.adapter = bankListAdapter
 

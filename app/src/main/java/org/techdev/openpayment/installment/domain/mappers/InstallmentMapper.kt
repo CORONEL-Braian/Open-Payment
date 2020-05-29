@@ -11,8 +11,8 @@ import org.techdev.openpayment.installment.data.repository.PayerCost as DataPaye
  */
 class InstallmentMapper {
 
-    fun convertFromDataModelToDomain(installmentsResponse: InstallmentsResponse) : Installment =
-        convertInstallmentItemToDomain(installmentsResponse)
+    fun convertFromDataModelToDomain(listInstallmentsResponse: List<InstallmentsResponse>) : Installment =
+        convertInstallmentItemToDomain(listInstallmentsResponse[0])
 
     /**
      * Convert the installment from the data to the domain model

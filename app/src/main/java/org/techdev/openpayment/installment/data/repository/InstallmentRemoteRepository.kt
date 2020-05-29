@@ -12,9 +12,18 @@ class InstallmentRemoteRepository @Inject constructor(
 
     private val installmentService = retrofitService.createService(InstallmentService::class.java)
 
-    suspend fun getInstallments(remoteErrorEmitter: RemoteErrorEmitter, paymentMethodId: String): InstallmentsResponse? =
+    suspend fun getInstallments(
+        remoteErrorEmitter: RemoteErrorEmitter,
+        amount: Float,
+        paymentMethodId: String,
+        issuerId: Int
+    ): List<InstallmentsResponse>? =
         apiCallManager.executeSafeApiCall(remoteErrorEmitter) {
-            installmentService.getInstallments(paymentMethodId = paymentMethodId)
+            installmentService.getInstallments(
+                amount = amount.toString(),
+                paymentMethodId = paymentMethodId,
+                issuerId = issuerId.toString()
+            )
         }
 
 }
